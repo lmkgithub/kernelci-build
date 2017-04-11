@@ -444,11 +444,12 @@ if install:
         build_data = {}
         if "defconfig_full" in bmeta:
             defconfig = defconfig_full
-        publish_path = os.path.join(job, git_describe, arch + '-' + defconfig)
+        publish_path = os.path.join(job, git_branch, git_describe, arch, defconfig)
         headers['Authorization'] = token
         upload_data['path'] = publish_path
         build_data['job'] = job
         build_data['kernel'] = git_describe
+        build_data['git_branch'] = git_branch
         build_data['defconfig'] = defconfig
         build_data['arch'] = arch
         if "defconfig_full" in bmeta:
